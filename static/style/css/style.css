@@ -1,0 +1,257 @@
+:root {
+    --swandoo-green: #84BD00;
+    --swandoo-blue: #19283B;
+    --swandoo-gray: #949290;
+}
+
+@font-face {
+    font-family: 'Noto Sans';
+    src: local('Noto Sans'), local('NotoSans'), url('../fonts/noto/notosans.woff2') format('woff2'), url('../fonts/noto/notosans.woff') format('woff'), url('../fonts/noto/notosans.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Noto Sans';
+    src: local('Noto Sans Italic'), local('NotoSans-Italic'), url('../fonts/noto/notosansitalic.woff2') format('woff2'), url('../fonts/noto/notosansitalic.woff') format('woff'), url('../fonts/noto/notosansitalic.ttf') format('truetype');
+    font-weight: 400;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Noto Sans';
+    src: local('Noto Sans Bold'), local('NotoSans-Bold'), url('../fonts/noto/notosansbold.woff2') format('woff2'), url('../fonts/noto/notosansbold.woff') format('woff'), url('../fonts/noto/notosansbold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Noto Sans';
+    src: local('Noto Sans Bold Italic'), local('NotoSans-BoldItalic'), url('../fonts/noto/notosansbolditalic.woff2') format('woff2'), url('../fonts/noto/notosansbolditalic.woff') format('woff'), url('../fonts/noto/notosansbolditalic.ttf') format('truetype');
+    font-weight: 700;
+    font-style: italic;
+}
+
+body {
+    font-family: "Noto Sans", "Helvetica", Sans-Serif, serif;
+}
+
+ul, li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+    animation-duration: 1s;
+    animation-timing-function: ease-in;
+}
+
+a:hover {
+    color: var(--swandoo-green);
+}
+
+.footer-list {
+    width: 100%;
+    display: flex;
+    list-style: none;
+    padding: 0;
+}
+
+.footer__item-title {
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.elementor-icon svg {
+    width: 2em;
+    height: 2em;
+    position: relative;
+    display: block;
+}
+
+.footer__tree {
+    float: right;
+    width: 84px;
+    height: 78px;
+}
+
+.dark-bg {
+    background-color: var(--swandoo-blue);
+    color: #ffffff;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.footer__item {
+    font-size: 13px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border: 0;
+}
+
+.light-bg {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    background-color: rgb(36, 47, 62);
+}
+
+/* DetailView */
+
+.main-image {
+    max-height: 350px;
+}
+
+.detail__header {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.detail__h1 {
+    letter-spacing: 4.4px;
+    font-size: 30px;
+    text-transform: uppercase;
+    display: block;
+    color: #14283c;
+}
+
+.detail__h2 {
+    color: #84BD00;
+    display: block;
+    font-size: 18px;
+    padding-top: 3px;
+    margin-bottom: 30px;
+}
+
+.breadcrumbs {
+    height: 100px;
+    line-height: 50px;
+}
+
+.center-list {
+    justify-content: center;
+    align-self: center;
+}
+
+.breadcrumb__item {
+    padding: 0 5px 0 5px;
+}
+
+.breadcrumb__item:not(:last-child) {
+    border-right: #14283c solid 1px;
+}
+
+p > span {
+    font-size: 17px;
+    line-height: 24px;
+    padding: 20px 0;
+    margin: 0;
+}
+
+.section-offset {
+    padding-bottom: 15px;
+    padding-top: 15px;
+}
+
+.reward-standard {
+    max-width: 257px;
+    margin: 5px 20px 20px 0;
+}
+
+.images {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.reward-small {
+    max-width: 177px;
+}
+
+.features-list__img {
+    max-height: 216px;
+    max-width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.column-title {
+    font-size: 18px;
+    letter-spacing: .6px;
+    text-transform: uppercase;
+    hyphens: none;
+    font-weight: 700;
+    color: var(--swandoo-green);
+}
+
+.column-text {
+    padding: 20px;
+    font-size: 17px;
+    line-height: 24px;
+    hyphens: none;
+    color: var(--swandoo-blue);
+}
+
+.specs-section {
+    background-color: #eeeeee4f;
+}
+
+.spec__item {
+    background-repeat: no-repeat;
+    background-position: left;
+    padding-left: 80px;
+    background-size: 75px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.spec__item__descr {
+    display: flex;
+    flex-direction: column;
+    min-height: 80px;
+    padding-top: 10px;
+}
+
+.spec__list {
+    padding: 0;
+}
+
+.spec__item__descr__title {
+    display: block;
+    text-transform: uppercase;
+    color: var(--swandoo-green);
+    font-size: 17px;
+    line-height: 24px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.gray {
+    color: var(--swandoo-gray);
+}
+
+
+.show-more {
+    text-transform: uppercase;
+    color: var(--swandoo-green);
+    font-weight: 300;
+    font-size: 20px;
+    text-decoration: underline var(--swandoo-green) solid 1px;
+    cursor: pointer;
+    margin: 10px 0;
+    position: relative;
+    hyphens: none;
+    padding: 0;
+}
+#hideSpec {
+    opacity: 1;
+    transition: max-height ease-in-out 2s;
+}
+#hideSpec {
+    opacity: 0;
+}
+
+.color-icon {
+    width: 25px;
+}

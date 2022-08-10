@@ -1,0 +1,92 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}Swandoo официальный сайт{% endblock %}</title>
+  <link rel="stylesheet" href="text/css" href="{% static 'style/css/normalize.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'style/node_modules/bootstrap/dist/css/bootstrap.min.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'style/css/style.css' %}">
+  <script rel="stylesheet" type="application/javascript"
+          href="{% static 'style/node_modules/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+  <script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
+  <script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+{% block content %}{% endblock %}
+<footer>
+  <div class="light-bg">
+    <div class="d-flex justify-content-center">
+      <a class="elementor-icon" href="https://swandoo.com/newsletter/">
+        <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 40 40">
+          <defs>
+            <style>.cls-1, .cls-2 {
+                fill: #e03c31;
+            }
+
+            .cls-1 {
+                opacity: 0.3;
+            }</style>
+          </defs>
+          <path class="cls-1"
+                d="M20.11,35.85a.53.53,0,0,1-.25-.05C1.43,27.2,3.71,14.63,3.74,14.5s.7-6.38,6.41-8.92c4.77-2.12,8.72.57,10,1.58a9.58,9.58,0,0,1,10-1.58c5.6,2.49,6.36,8.49,6.41,9,.12.74,1.82,12.88-16.13,21.26A.52.52,0,0,1,20.11,35.85Z"></path>
+          <path class="cls-2"
+                d="M20.11,36.5a1.17,1.17,0,0,1-.52-.12C1.21,27.81,3,15.21,3.1,14.41,3.16,13.9,4,7.62,9.89,5A10.16,10.16,0,0,1,20.11,6.35,10.15,10.15,0,0,1,30.33,5c5.83,2.59,6.7,8.69,6.79,9.46s1.82,13.39-16.5,21.93A1.13,1.13,0,0,1,20.11,36.5Zm0-1.28ZM13.81,5.43a8.37,8.37,0,0,0-3.4.74c-5.43,2.41-6,8.33-6,8.39a.17.17,0,0,1,0,.07c0,.12-2.06,12.25,15.74,20.57C37.68,27,35.93,15.14,35.85,14.64v0c0-.25-.72-6.08-6-8.44a8.87,8.87,0,0,0-9.29,1.49.64.64,0,0,1-.82,0A9.61,9.61,0,0,0,13.81,5.43ZM7.42,16.17h-.1a.63.63,0,0,1-.53-.74c0-.22,1-5.48,5.25-7.07a.65.65,0,0,1,.45,1.21c-3.59,1.33-4.42,6-4.43,6.08A.64.64,0,0,1,7.42,16.17Z"></path>
+        </svg>
+      </a>
+    </div>
+    <div class="text-center">
+      <p></p>
+    </div>
+  </div>
+  <nav class="dark-bg">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-sm-12 col-md-6 col-lg-3 my-2">
+          <h3 class="footer__item-title">О нас</h3>
+          <ul class="footer-list flex-column">
+            <li class="footer__item">Познакомтесь с cемьей Swandoo</li>
+            <li class="footer__item">Сотрудничество с нами</li>
+          </ul>
+        </div>
+
+        <div class="col-sm-12 col-md-6 col-lg-3 my-2">
+          <h3 class="footer__item-title">Где нас найти</h3>
+          <ul class="footer-list flex-column">
+            <li class="footer__item">Мы на OZON</li>
+            <li class="footer__item">Наши партнеры</li>
+          </ul>
+        </div>
+
+        <div class="col-sm-12 col-md-6 col-lg-3 my-2">
+          <h3 class="footer__item-title">Наша продукция</h3>
+          <ul class="footer-list flex-column">
+            {% for model in models_footer %}
+              <li class="footer__item">
+                <a href="{% url 'product:product_detail' model.slug %}">{{ model.name }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+
+        <div class="col-sm-12 col-md-6 col-lg-3 my-2">
+          <h3 class="footer__item-title">Поддержка</h3>
+          <ul class="footer-list flex-column">
+            <li class="footer__item">По вопросам гарантии</li>
+          </ul>
+        </div>
+        <div class="col-12">
+          <a href="#">
+            <img class='footer__tree' src="https://www.swandoo.com/wp-content/themes/Swandoo_theme/img/tree.svg" alt="">
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+  </nav>
+</footer>
+</body>
+</html>

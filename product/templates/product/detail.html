@@ -1,0 +1,152 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Swandoo {{ product.name }} {% endblock %}
+{% block content %}
+  <section class="detail__header">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 mx-auto">
+          <img class='main-image' src="{{ main_photo.main_photo.url }}" alt="">
+        </div>
+        <h1 class="detail__h1">{{ product.description.h1 }}</h1>
+        <h2 class="detail__h2">{{ product.description.h2 }}</h2>
+        <nav aria-label="breadcrumb">
+          <ul class="breadcrumb center-list">
+            <li class="breadcrumb__item">
+              <span>
+                На главную
+              </span>
+            </li>
+            <li class="breadcrumb__item">
+              <span>
+                Наши Товары
+              </span>
+            </li>
+            <li class="breadcrumb__item">
+              <span>{{ product.name }}</span>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </section>
+  <section class="section-offset">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 mx-auto text-center">
+          {{ product.description.heading_1_text | safe }}
+          <div class="images">
+            {% for reward in rewards_standard %}
+              <img class="reward-standard" src="{{ reward.image.url }}"
+                   alt="{{ reward.model.name }} {{ reward.name }}">
+            {% endfor %}
+          </div>
+          <div class="images">
+            {% for reward in rewards_small %}
+              <img class="reward-small" src="{{ reward.image.url }}"
+                   alt="{{ reward.model.name }} {{ reward.name }}">
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section-offset">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 mx-auto text-center">
+          {{ heading_2_header | safe }}
+        </div>
+      </div>
+      <div class="col-12 mx-auto">
+        <div class="d-flex flex-wrap justify-content-between">
+          <div class="col-12 col-md-3">
+            <div class="text-center">
+              <img class="features-list__img" src="{{ product.description.heading_2_image_1.url }}"
+                   alt="{{ product.description.heading_2_image_1_title }}">
+              <h4 class="column-title">{{ product.description.heading_2_image_1_title }}</h4>
+              <p>{{ product.description.heading_2_image_1_text }}</p>
+            </div>
+          </div>
+          <div class="col-12 col-md-3">
+            <div class="text-center">
+              <img class="features-list__img" src="{{ product.description.heading_2_image_2.url }}"
+                   alt="{{ product.description.heading_2_image_2_title }}">
+              <h4 class="column-title">{{ product.description.heading_2_image_2_title }}</h4>
+              <p>{{ product.description.heading_2_image_2_text }}</p>
+            </div>
+          </div>
+          <div class="col-12 col-md-3">
+            <div class="text-center">
+              <img class="features-list__img" src="{{ product.description.heading_2_image_3.url }}"
+                   alt="{{ product.description.heading_2_image_3_title }}">
+              <h4 class="column-title">{{ product.description.heading_2_image_3_title }}</h4>
+              <p>{{ product.description.heading_2_image_3_text }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  {% if colored_specs %}
+    <section class="section-offset specs-section">
+      <div class="container">
+        <div class="row">
+          <div class="text-center">
+            <h3>Характеристики</h3>
+          </div>
+          <div class="col-10 mx-auto ">
+            <div class="d-flex spec__list flex-wrap justify-content-center mx-auto">
+              {% for spec in colored_specs %}
+                <div class="spec__item col-12 col-md-6 col-xl-4 mx-auto"
+                     style="background-image: url('{{ spec.image.url }}')">
+                  <div class="spec__item__descr">
+                    <h4 class="spec__item__descr__title">{{ spec.title }}</h4>
+                    <p class="spec__item__descr__text">{{ spec.text }}</p>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+            <div class="text-center show-more">
+              <span class="text-center " onclick="showMore()">Больше характеристик</span>
+            </div>
+
+            <div class="row" id="hideSpec" style="opacity: 0; height: 0">
+              {% for spec in non_colored_specs %}
+                <div class="spec__item col-12 col-md-6 col-xl-4 mx-auto"
+                     style="background-image: url('{{ spec.image.url }}')">
+                  <div class="spec__item__descr">
+                    <h4 class="spec__item__descr__title gray">{{ spec.title }}</h4>
+                    <p class="spec__item__descr__text gray">{{ spec.text }}</p>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      </div>
+    </section>
+    <script src="{% static 'style/js/functions.js' %}"></script>
+  {% endif %}
+  <section class="section-offset">
+    <div class="container">
+      <div class="row">
+        <div class="text-center">
+          <h3>{{ product.description.heading_3_title }}</h3>
+          <h4 class="small" style="color: var(--swandoo-green)">{{ product.description.heading_3_subtitle }}</h4>
+        </div>
+        <div class="">
+          <ul>
+            {% for var in variety %}
+            <li class="color-icon">
+              <img src="{{ var.color.image.url }}" alt="{{ product.name }}/{{ var.color.name }}">
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

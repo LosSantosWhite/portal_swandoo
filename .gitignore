@@ -1,0 +1,4 @@
+# Project exclude paths
+/static/style/node_modules/
+/venv/
+.idea
