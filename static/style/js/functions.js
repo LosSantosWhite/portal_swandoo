@@ -6,6 +6,6 @@ function showMore() {
   } else {
     elementBlock.style.opacity = "0";
     elementBlock.style.height = "0";
-
   }
 }
+

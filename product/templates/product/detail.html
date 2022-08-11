@@ -137,14 +137,38 @@
           <h3>{{ product.description.heading_3_title }}</h3>
           <h4 class="small" style="color: var(--swandoo-green)">{{ product.description.heading_3_subtitle }}</h4>
         </div>
-        <div class="">
-          <ul>
+        <div class="col-1 mx-auto">
+          <ul id="colors" class="d-flex flex-column">
             {% for var in variety %}
-            <li class="color-icon">
-              <img src="{{ var.color.image.url }}" alt="{{ product.name }}/{{ var.color.name }}">
-            </li>
+              <li id="{{ var.id }}" class="color-icon my-auto">
+                <img class="icon" src="{{ var.color.image.url }}" alt="{{ product.name }}/{{ var.color.name }}">
+              </li>
             {% endfor %}
           </ul>
+          <script>
+            let ul = document.getElementById('colors');
+            let selectedItem;
+
+            ul.onclick = function (event) {
+              let target = event.target.closest('li');
+
+              if (!target) return;
+
+              if (!ul.contains(target)) return;
+
+              highlight(target)
+            }
+
+            function highlight(target) {
+              if (selectedItem) {
+                selectedItem.classList.remove('active')
+              }
+              selectedItem = target;
+              console.log(selectedItem)
+              selectedItem.classList.add('active')
+            }
+
+          </script>
         </div>
       </div>
     </div>
