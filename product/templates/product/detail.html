@@ -13,13 +13,14 @@
         <nav aria-label="breadcrumb">
           <ul class="breadcrumb center-list">
             <li class="breadcrumb__item">
-              <span>
+              <span style="color: var(--swandoo-green); font-size: 16px; line-height: 24px;">
                 На главную
               </span>
             </li>
             <li class="breadcrumb__item">
-              <span>
-                Наши Товары
+              <span
+                  style="color: var(--swandoo-green); font-size: 16px; line-height: 24px;-webkit-font-smoothing: antialiased">
+                Наши товары
               </span>
             </li>
             <li class="breadcrumb__item">
@@ -128,7 +129,6 @@
       </div>
       </div>
     </section>
-    <script src="{% static 'style/js/functions.js' %}"></script>
   {% endif %}
   <section class="section-offset">
     <div class="container">
@@ -137,40 +137,76 @@
           <h3>{{ product.description.heading_3_title }}</h3>
           <h4 class="small" style="color: var(--swandoo-green)">{{ product.description.heading_3_subtitle }}</h4>
         </div>
-        <div class="col-1 mx-auto">
-          <ul id="colors" class="d-flex flex-column">
+        <div class="row justify-content-center">
+          <div class="col-12 col-md-2">
+            <ul id="colors"
+                class="colors-list d-flex flex-md-column flex-sm-row d-sm-flex justify-content-center justify-content-sm-center justify-content-md-center">
+              {% for var in variety %}
+                <li class="">
+                  <img id="color-{{ var.color.id }}" class="{% if forloop.first %}active{% endif %} color-icon icon"
+                       src="{{ var.color.image.url }}" alt="{{ product.name }}/{{ var.color.name }}">
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+          <div class="col-12 col-md-4 col-xl-1 d-sm-flex justify-content-center justify-content-sm-center">
             {% for var in variety %}
-              <li id="{{ var.id }}" class="color-icon my-auto">
-                <img class="icon" src="{{ var.color.image.url }}" alt="{{ product.name }}/{{ var.color.name }}">
-              </li>
+              <div id="photo-{{ var.color.id }}" class="{% if not forloop.first %}inactive-image{% endif %}">
+                <img class="color-image"
+                     src="{{ var.main_photo.url }}" alt="{{ var.model.name }} {{ var.color.name }}">
+                <p class="text-center" style="color: var(--swandoo-green)">{{ var.color.name }}</p>
+              </div>
             {% endfor %}
-          </ul>
-          <script>
-            let ul = document.getElementById('colors');
-            let selectedItem;
 
-            ul.onclick = function (event) {
-              let target = event.target.closest('li');
-
-              if (!target) return;
-
-              if (!ul.contains(target)) return;
-
-              highlight(target)
-            }
-
-            function highlight(target) {
-              if (selectedItem) {
-                selectedItem.classList.remove('active')
-              }
-              selectedItem = target;
-              console.log(selectedItem)
-              selectedItem.classList.add('active')
-            }
-
-          </script>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="text-center">
+          <a class="btn-buy" href="">Купить</a>
         </div>
       </div>
     </div>
+    <script>
+                {# смена фотографии по клику на цвет #}
+      let ul = document.getElementById('colors');
+      let selectedPhoto = document.getElementById('photo-{{ variety.first.color.id }}');
+      let selectedItem = document.getElementById('color-{{ variety.first.color.id }}');
+
+      ul.onclick = function (event) {
+        let target = event.target.closest('img');
+
+        if (!target) return;
+
+        if (!ul.contains(target)) return;
+
+
+        highlight(target)
+      }
+
+      function highlight(target) {
+        if (selectedItem) {
+          selectedItem.classList.remove('active');
+          selectedPhoto.classList.add('inactive-image');
+        }
+        console.log(selectedPhoto)
+        const photoId = "photo-" + target.id.toString().slice(-1);
+        selectedPhoto = document.getElementById(photoId);
+
+        selectedItem = target;
+        selectedItem.classList.add('active');
+        selectedPhoto.classList.remove('inactive-image');
+      }
+
+    </script>
   </section>
+  <section class="section">
+    <div class="container">
+      <div class="row">
+        <div class="text-center">
+          <h3>{{ product.description.heading_4_title }}</h3>
+        </div>
+  </section>
+  <script src="{% static 'style/js/functions.js' %}"></script>
+
 {% endblock %}

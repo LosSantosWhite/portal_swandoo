@@ -17,8 +17,9 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-
+from product.views import ProductListView
 urlpatterns = [
                   path('admin/', admin.site.urls),
-                  path('product/', include('product.urls', namespace='product'))
+                  path('product/', include('product.urls', namespace='product')),
+                  path('', ProductListView.as_view(), name='main')
               ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

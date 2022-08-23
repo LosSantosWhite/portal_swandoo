@@ -4,14 +4,12 @@
 <head>
   <meta charset="UTF-8">
   <title>{% block title %}Swandoo официальный сайт{% endblock %}</title>
-  <link rel="stylesheet" href="text/css" href="{% static 'style/css/normalize.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'style/css/normalize.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'style/node_modules/bootstrap/dist/css/bootstrap.min.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'style/css/style.css' %}">
-  <script rel="stylesheet" type="application/javascript"
-          href="{% static 'style/node_modules/bootstrap/dist/js/bootstrap.min.js' %}"></script>
-  <script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
-  <script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
+  {% block style %} {% endblock %}
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
 </head>
 <body>
 {% block content %}{% endblock %}
@@ -88,5 +86,9 @@
 
   </nav>
 </footer>
+<script rel="stylesheet" type="application/javascript"
+        src="{% static 'style/node_modules/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+<script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
+<script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
 </body>
 </html>

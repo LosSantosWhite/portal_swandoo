@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from product.models import Category, Model, Description, Specification, Variety, Gallery, Color, RewardsImage
+from product.models import Category, Model, Description, Specification, Variety, Gallery, Color, RewardsImage, Slider
 
 
 @admin.register(Category)
@@ -42,3 +42,9 @@ class GalleryAdmin(admin.ModelAdmin):
 class ModelAdmin(admin.ModelAdmin):
     list_display = ['category', 'name', 'slug']
     prepopulated_fields = {"slug": ("name",)}
+
+
+@admin.register(Slider)
+class SliderAdmin(admin.ModelAdmin):
+    list_display = ['id', 'heading', 'url_to']
+    list_editable = ['heading', 'url_to']

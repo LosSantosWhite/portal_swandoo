@@ -1,5 +1,5 @@
 from django.views.generic import ListView, DetailView
-from product.models import Model, RewardsImage, Variety, Specification, Color
+from product.models import Model, RewardsImage, Variety, Specification, Color, Slider
 
 
 class ProductDetailView(DetailView):
@@ -22,3 +22,10 @@ class ProductDetailView(DetailView):
 
 class ProductListView(ListView):
     queryset = Model.objects.all()
+    template_name = 'product/main.html'
+    context_object_name = 'models'
+
+    def get_context_data(self, **kwargs):
+        context = super(ProductListView, self).get_context_data(**kwargs)
+        context['sliders'] = Slider.objects.all()
+        return context

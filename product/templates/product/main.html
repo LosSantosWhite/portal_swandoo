@@ -1,10 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Swandoo официальная страница{% endblock %}
+{% block style %}
+  <link rel="stylesheet" href="{% static 'style/css/slider.css' %}">
+  <link rel="stylesheet" href="{% static 'style/node_modules/swiper/swiper-bundle.min.css' %}">
+{% endblock %}
+{% block content %}
+  <section>
+    <div class="image-slider swiper-container">
+      <div class="image-slider__wrapper swiper-wrapper">
+        <div class="image-slider__slide swiper-slide">
+          <img class="image-slider__image" src="{% static 'products/slider/1.png' %}" alt="">
+        </div>
+        <div class="swiper-slide">
+          <img src="{% static 'products/slider/2.png' %}" alt="">
+        </div>
+        <div class="swiper-slide">
+
+        </div>
+        <div class="swiper-slide">
+
+        </div>
+      </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
+  </section>
+  <script src="{% static 'style/node_modules/swiper/swiper-bundle.min.js' %}"></script>
+  <script src="{% static 'style/js/slider.js' %}"></script>
+
+
+{% endblock %}

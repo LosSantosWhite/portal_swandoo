@@ -2,3 +2,4 @@
 /static/style/node_modules/
 /venv/
 .idea
+__pycache__

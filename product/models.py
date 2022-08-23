@@ -63,6 +63,14 @@ def upload_descr_photo(instance, filename):
         filename
     )
 
+def upload_slider_image(instance, file_name):
+    return os.path.join(
+        'static',
+        'products',
+        'slider',
+        file_name
+    )
+
 
 class Category(models.Model):
     name = models.CharField('Название категории', max_length=50)
@@ -161,3 +169,12 @@ class Variety(models.Model):
 class Gallery(models.Model):
     variety = models.ForeignKey(Variety, on_delete=models.PROTECT)
     image = models.ImageField(upload_to=upload_photo_gallery)
+
+
+class Slider(models.Model):
+    heading = models.CharField('Заголовок слайдера', max_length=100, )
+    description = models.CharField('Краткое описание', max_length=100, )
+
+    desktop_image = models.ImageField('Картинка для компьютерной версии сайта', upload_to=upload_slider_image)
+    mobile_image = models.ImageField('Картинка для мобильной версии сайта', upload_to=upload_slider_image)
+    url_to = models.URLField('Ссылка на страницу')

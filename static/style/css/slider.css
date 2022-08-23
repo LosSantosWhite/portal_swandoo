@@ -1,0 +1,19 @@
+.image-slider {
+    height: 100vh;
+}
+
+.image-slider__wrapper {
+  height: 100%;
+}
+
+.image-slider__slide {
+    height: 100%;
+}
+
+.image-slider__image {
+    height: 100%;
+}
+.swiper-button-next::after,
+.swiper-button-prev::after {
+    color: var(--swandoo-green);
+}
