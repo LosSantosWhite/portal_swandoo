@@ -1,6 +1,11 @@
 new Swiper('.image-slider', {
-  navigation: {
-    nextEl: '.swiper-button-next',
-    prevEl: '.swiper-button-prev'
-  }
+    pagination: {
+      el: '.swiper-pagination',
+    },
+    loop: true,
+  autoplay: {
+      delay: 1500,
+      disableOnInteraction: true,
+  },
+  speed: 700
 });

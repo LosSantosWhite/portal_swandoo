@@ -145,18 +145,18 @@ class RewardsImage(models.Model):
 
 
 class Specification(models.Model):
-    model = models.ForeignKey(Model, on_delete=models.PROTECT)
+    model = models.ForeignKey(Model, on_delete=models.PROTECT, related_name='spec')
     title = models.CharField('Заголовок', max_length=30)
     text = models.CharField('Описание', max_length=30)
     image = models.ImageField('Картинка', upload_to=upload_icons, null=True, blank=True)
-    main = models.BooleanField('Основная характеристика (цветная)', default=False)
+    main = models.BooleanField('Основная характеристика/(цветная)', default=False)
 
     def __str__(self):
         return f'{self.model.name} -- {self.title}'
 
 
 class Variety(models.Model):
-    model = models.ForeignKey(Model, on_delete=models.PROTECT)
+    model = models.ForeignKey(Model, on_delete=models.PROTECT, related_name='variety')
     barcode = models.CharField('Артикул товара', max_length=12, unique=True)
     color = models.ForeignKey(Color, on_delete=models.PROTECT)
     price = models.DecimalField(decimal_places=2, max_digits=7)

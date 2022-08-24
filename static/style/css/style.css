@@ -34,6 +34,7 @@
 
 body {
     font-family: "Noto Sans", "Helvetica", Sans-Serif, serif;
+    overflow-x: hidden;
 }
 
 ul, li {
@@ -45,10 +46,6 @@ a {
     color: #fff;
     animation-duration: 1s;
     animation-timing-function: ease-in;
-}
-
-a:hover {
-    color: var(--swandoo-green);
 }
 
 .footer-list {
@@ -316,4 +313,5 @@ p > span {
     background-color: var(--swandoo-blue);
 
 }
+
 
