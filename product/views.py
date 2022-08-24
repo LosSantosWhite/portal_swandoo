@@ -26,11 +26,12 @@ class ProductListView(ListView):
     context_object_name = 'varieties'
 
     def get_context_data(self, **kwargs):
-        # TODO додумать queryset
         context = super(ProductListView, self).get_context_data(**kwargs)
         context['sliders'] = Slider.objects.all()
         return context
 
     def get_queryset(self):
+        # TODO додумать queryset
+
         models = Model.objects.distinct()
 
