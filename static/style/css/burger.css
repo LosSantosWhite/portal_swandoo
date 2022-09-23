@@ -1,0 +1,128 @@
+@import url("style.css");
+
+:root {
+    --burger_size: 26px;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+}
+
+.header_nav {
+    display: flex;
+    position: absolute;
+    z-index: 1000;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.withe-bg {
+    background-color: #fff;
+}
+
+/* .withe-bg .burger__burger-line {
+    color: var(--swandoo-blue);
+} */
+
+
+.header-nav__items {
+    height: 100vh;
+    min-width: 40%;
+    max-width: 500px;
+    right: 0 !important;
+    z-index: 1000;
+    position: absolute;
+    list-style: none;
+    visibility: hidden;
+    transform: rotateY(1deg);
+    background-color: var(--swandoo-blue);
+    -webkit-transition: transform 0.3s;
+    transition: transform .8s ease-in-out;
+    color:#fff;
+}
+
+
+.header-active {
+    transform: rotateY(0deg);
+    visibility: inherit;
+    position: fixed;
+    overflow: auto;
+    transition: right .3s ease-in-out, transform .3s ease-in-out;
+    color:#fff;
+}
+
+
+.burger {
+    margin-left: auto;
+    width: var(--burger_size);
+    height: var(--burger_size);
+    position: absolute;
+    top: 16px;
+    right: 2em;
+    text-align: center;
+    color: #fff;
+    z-index: 2000;
+    cursor: pointer;
+}
+
+.burger-blue {
+    color: var(--swandoo-blue)
+}
+
+.burger__burger-line {
+    position: absolute;
+    left: 50%;
+    width: 20px;
+    height: 2px;
+    border-radius: 2px;
+    background-color: currentColor;
+    transform: translateX(-50%);
+    opacity: 100%;
+    transition: transform .3s ease-in-out, opacity .3s ease-in-out, left .3s ease-in-out, top .3s ease-in-out;
+}
+
+.burger__burger-line:last-child {
+    bottom: 6px;
+}
+
+.burger__burger-line:first-child {
+    top: 6px;
+}
+
+.burger__burger-line:nth-child(2) {
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.burger-active .burger__burger-line {
+    color: #fff;
+}
+
+.burger__active .burger__burger-line:nth-child(2) {
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+}
+
+.burger__active .burger__burger-line:first-child {
+    width: var(--burger_size);
+    left: 0;
+    top: 50%;
+    transform: rotate(-45deg);
+    transform-origin: center;
+    transition: transform .3s ease-in-out top .3sm ease-in-out left .3s ease-in-out;
+}
+
+.burger__active .burger__burger-line:last-child {
+    width: var(--burger_size);
+    left: 0;
+    top: 50%;
+    transform: rotate(225deg);
+    transform-origin: center;
+    transition: transform .3s ease-in-out, top .3sm ease-in-out, left .3s ease-in-out;
+}
+
+.stop-scroll {
+    overflow: hidden;
+    box-shadow: inset 0 0 490px black;
+}

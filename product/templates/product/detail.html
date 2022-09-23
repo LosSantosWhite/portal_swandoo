@@ -8,34 +8,36 @@
         <div class="col-md-6 mx-auto">
           <img class='main-image' src="{{ main_photo.main_photo.url }}" alt="">
         </div>
+      </div>
+      <div class="row justify-content-center flex-column">
         <h1 class="detail__h1">{{ product.description.h1 }}</h1>
         <h2 class="detail__h2">{{ product.description.h2 }}</h2>
-        <nav aria-label="breadcrumb">
-          <ul class="breadcrumb center-list">
-            <li class="breadcrumb__item">
+      </div>
+      <nav aria-label="breadcrumb ">
+        <ul class="breadcrumb justify-content-center">
+          <li class="breadcrumb__item">
               <span style="color: var(--swandoo-green); font-size: 16px; line-height: 24px;">
                 На главную
               </span>
-            </li>
-            <li class="breadcrumb__item">
+          </li>
+          <li class="breadcrumb__item">
               <span
                   style="color: var(--swandoo-green); font-size: 16px; line-height: 24px;-webkit-font-smoothing: antialiased">
                 Наши товары
               </span>
-            </li>
-            <li class="breadcrumb__item">
-              <span>{{ product.name }}</span>
-            </li>
-          </ul>
-        </nav>
-      </div>
+          </li>
+          <li class="breadcrumb__item">
+            <span>{{ product.name }}</span>
+          </li>
+        </ul>
+      </nav>
     </div>
   </section>
   <section class="section-offset">
     <div class="container">
       <div class="row">
         <div class="col-md-8 mx-auto text-center">
-          {{ product.description.heading_1_text | safe }}
+          {{ product.description.reward_title | safe }}
           <div class="images">
             {% for reward in rewards_standard %}
               <img class="reward-standard" src="{{ reward.image.url }}"
@@ -52,49 +54,42 @@
       </div>
     </div>
   </section>
-  <section class="section-offset">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-8 mx-auto text-center">
-          {{ heading_2_header | safe }}
-        </div>
-      </div>
-      <div class="col-12 mx-auto">
-        <div class="d-flex flex-wrap justify-content-between">
-          <div class="col-12 col-md-3">
-            <div class="text-center">
-              <img class="features-list__img" src="{{ product.description.heading_2_image_1.url }}"
-                   alt="{{ product.description.heading_2_image_1_title }}">
-              <h4 class="column-title">{{ product.description.heading_2_image_1_title }}</h4>
-              <p>{{ product.description.heading_2_image_1_text }}</p>
-            </div>
-          </div>
-          <div class="col-12 col-md-3">
-            <div class="text-center">
-              <img class="features-list__img" src="{{ product.description.heading_2_image_2.url }}"
-                   alt="{{ product.description.heading_2_image_2_title }}">
-              <h4 class="column-title">{{ product.description.heading_2_image_2_title }}</h4>
-              <p>{{ product.description.heading_2_image_2_text }}</p>
-            </div>
-          </div>
-          <div class="col-12 col-md-3">
-            <div class="text-center">
-              <img class="features-list__img" src="{{ product.description.heading_2_image_3.url }}"
-                   alt="{{ product.description.heading_2_image_3_title }}">
-              <h4 class="column-title">{{ product.description.heading_2_image_3_title }}</h4>
-              <p>{{ product.description.heading_2_image_3_text }}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  {% if colored_specs %}
-    <section class="section-offset specs-section">
+  {% if product.description.features %}
+    <section class="section-offset">
       <div class="container">
         <div class="row">
+          <div class="col-md-8 mx-auto text-center">
+            {{ heading_2_header | safe }}
+          </div>
+        </div>
+        <div class="col-12 mx-auto">
           <div class="text-center">
-            <h3>Характеристики</h3>
+            <h3>Специальные возможности</h3>
+          </div>
+          <div class="d-flex flex-wrap justify-content-center">
+            {% for feature in product.description.features.all %}
+              <div class="col-12 col-md-3">
+                <div class="text-center">
+                  <img class="features-list__img" src="{{ feature.image.url }}"
+                       alt="{{ feature.title }}">
+                  <h4 class="column-title">{{ feature.title }}</h4>
+                  <p>{{ feature.text }}</p>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </section>
+  {% endif %}
+  {% if colored_specs %}
+    <section class="section-offset gray-bg">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="text-center">
+              <h3 class="">Характеристики</h3>
+            </div>
           </div>
           <div class="col-10 mx-auto ">
             <div class="d-flex spec__list flex-wrap justify-content-center mx-auto">
@@ -126,61 +121,58 @@
           </div>
         </div>
       </div>
-      </div>
-      </div>
     </section>
   {% endif %}
   <section class="section-offset">
     <div class="container">
       <div class="row">
-        <div class="text-center">
-          <h3>{{ product.description.heading_3_title }}</h3>
-          <h4 class="small" style="color: var(--swandoo-green)">{{ product.description.heading_3_subtitle }}</h4>
-        </div>
-        <div class="row justify-content-center">
-          <div class="col-12 col-md-2">
-            <ul id="colors"
-                class="colors-list d-flex flex-md-column flex-sm-row d-sm-flex justify-content-center justify-content-sm-center justify-content-md-center">
+        <div class="col-12">
+          <div class="text-center">
+            <h3>{{ product.description.heading_3_title }}</h3>
+            <h4 class="small" style="color: var(--swandoo-green)">{{ product.description.heading_3_subtitle }}</h4>
+          </div>
+          <div class="row justify-content-center">
+            <div class="col-12 col-md-2">
+              <ul id="colors"
+                  class="colors-list d-flex flex-md-column flex-sm-row justify-content-center justify-content-sm-center justify-content-md-center">
+                {% for var in variety %}
+                  <li class="">
+                    <img id="color-{{ var.color.id }}" class="{% if forloop.first %}active{% endif %} color-icon icon"
+                         src="{{ var.color.image.url }}" alt="{{ product.name }}/{{ var.color.name }}">
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+            <div
+                class="col-12 col-md-4 col-xl-1 d-sm-flex justify-content-center justify-content-sm-center justify-content-md-center">
               {% for var in variety %}
-                <li class="">
-                  <img id="color-{{ var.color.id }}" class="{% if forloop.first %}active{% endif %} color-icon icon"
-                       src="{{ var.color.image.url }}" alt="{{ product.name }}/{{ var.color.name }}">
-                </li>
+                <div id="photo-{{ var.color.id }}" class="{% if not forloop.first %}inactive-image{% endif %}">
+                  <img class="color-image"
+                       src="{{ var.main_photo.url }}" alt="{{ var.model.name }} {{ var.color.name }}">
+                  <p class="text-center" style="color: var(--swandoo-green)">{{ var.color.name }}</p>
+                </div>
               {% endfor %}
-            </ul>
-          </div>
-          <div class="col-12 col-md-4 col-xl-1 d-sm-flex justify-content-center justify-content-sm-center">
-            {% for var in variety %}
-              <div id="photo-{{ var.color.id }}" class="{% if not forloop.first %}inactive-image{% endif %}">
-                <img class="color-image"
-                     src="{{ var.main_photo.url }}" alt="{{ var.model.name }} {{ var.color.name }}">
-                <p class="text-center" style="color: var(--swandoo-green)">{{ var.color.name }}</p>
-              </div>
-            {% endfor %}
 
+            </div>
           </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="text-center">
-          <a class="btn-buy" href="">Купить</a>
+        <div class="col-12">
+          <div class="text-center">
+            <a class="btn-buy" href="">Купить</a>
+          </div>
         </div>
       </div>
     </div>
     <script>
-                {# смена фотографии по клику на цвет #}
+      {# смена фотографии по клику на цвет #}
       let ul = document.getElementById('colors');
-      let selectedPhoto = document.getElementById('photo-{{ variety.first.color.id }}');
-      let selectedItem = document.getElementById('color-{{ variety.first.color.id }}');
+      let selectedPhoto = document.getElementById('photo-{{ variety_first_element_id }}');
+      let selectedItem = document.getElementById('color-{{ variety_first_element_id }}');
 
       ul.onclick = function (event) {
         let target = event.target.closest('img');
-
         if (!target) return;
-
         if (!ul.contains(target)) return;
-
-
         highlight(target)
       }
 
@@ -189,8 +181,8 @@
           selectedItem.classList.remove('active');
           selectedPhoto.classList.add('inactive-image');
         }
-        console.log(selectedPhoto)
-        const photoId = "photo-" + target.id.toString().slice(-1);
+        let matchId = target.id.toString().match(/(\d+)/)[0];
+        const photoId = "photo-" + matchId;
         selectedPhoto = document.getElementById(photoId);
 
         selectedItem = target;
@@ -200,13 +192,15 @@
 
     </script>
   </section>
-  <section class="section">
-    <div class="container">
-      <div class="row">
-        <div class="text-center">
-          <h3>{{ product.description.heading_4_title }}</h3>
-        </div>
-  </section>
+  {% if product.description.video_urls.all %}
+    <section class="section">
+      <div class="container">
+        <div class="row">
+          <div class="text-center">
+            <h3>{{ product.description.heading_4_title }}</h3>
+          </div>
+    </section>
+  {% endif %}
   <script src="{% static 'style/js/functions.js' %}"></script>
 
 {% endblock %}

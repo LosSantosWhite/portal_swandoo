@@ -5,13 +5,35 @@
   <meta charset="UTF-8">
   <title>{% block title %}Swandoo официальный сайт{% endblock %}</title>
   <link rel="stylesheet" type="text/css" href="{% static 'style/css/normalize.css' %}">
-  <link rel="stylesheet" type="text/css" href="{% static 'style/node_modules/bootstrap/dist/css/bootstrap.min.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'style/css/bootstrap.min.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'style/css/style.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'style/css/burger.css' %}">
   {% block style %} {% endblock %}
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
 </head>
 <body>
+  <section>
+    <div class="container-fluid">
+    <nav  class="header_nav {%if request.path != '/' %} white-bg {% endif %}">
+        <div class="logo">
+          <a href="{% url 'main' %}">
+            <img class="" src="{% if request.path != "/" %}{% static 'img/logo_blue.svg' %}{% else %}{% static 'img/logo_white.svg' %}{% endif %}" alt="Swandoo - всегда с Вами">
+          </a>
+        </div>
+        <div id="burgerMenu" class="burger {% if request.path != '/'%}burger-blue{% endif %}">
+          <span class="burger__burger-line"></span>
+          <span class="burger__burger-line"></span>
+          <span class="burger__burger-line"></span>
+        </div>
+        <ul id="menuBurgerItems" class="header-nav__items">
+          <li class="header-nav__items__item">Секция 1</li>
+          <li class="header-nav__items__item">Секция 2</li>
+          <li class="header-nav__items__item">Секция 3</li>
+        </ul>      
+      </nav>
+    </div>
+  </section>
 {% block content %}{% endblock %}
 <footer>
   <div class="light-bg">
@@ -76,7 +98,7 @@
           </ul>
         </div>
         <div class="col-12">
-          <a href="#">
+          <a href="{% url 'main' %}">
             <img class='footer__tree' src="https://www.swandoo.com/wp-content/themes/Swandoo_theme/img/tree.svg" alt="">
           </a>
         </div>
@@ -87,8 +109,10 @@
   </nav>
 </footer>
 <script rel="stylesheet" type="application/javascript"
-        src="{% static 'style/node_modules/bootstrap/dist/js/bootstrap.min.js' %}"></script>
-<script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
-<script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
+        src="{% static 'style/js/bootstrap.min.js' %}"></script>
+<script rel="stylesheet" type="application/javascript" type="text/javascript" src="{% static 'style/js/burger.js' %}"></script>
+<script rel="stylesheet" type="application/javascript" type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
+<script rel="stylesheet" type="application/javascript" type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
+{% block style_js %}{%endblock%}
 </body>
 </html>

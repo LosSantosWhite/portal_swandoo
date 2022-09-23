@@ -1,8 +1,12 @@
+@import url('../fonts/futura/stylesheet.css');
+
 :root {
     --swandoo-green: #84BD00;
     --swandoo-blue: #19283B;
     --swandoo-gray: #949290;
 }
+
+.row:before, .row:after {display: none !important;}
 
 @font-face {
     font-family: 'Noto Sans';
@@ -39,6 +43,7 @@ body {
 
 ul, li {
     list-style: none;
+    padding: 0;
 }
 
 a {
@@ -46,6 +51,14 @@ a {
     color: #fff;
     animation-duration: 1s;
     animation-timing-function: ease-in;
+}
+
+.latin {
+    font-family: Futura LT, "Noto Sans",Sans-Serif, serif;
+}
+.logo img {
+    max-width: 195px;
+    height: 180%;
 }
 
 .footer-list {
@@ -127,9 +140,10 @@ a {
     line-height: 50px;
 }
 
-.center-list {
+
+.breadcrumb {
+    background-color: #ffffff;
     justify-content: center;
-    align-self: center;
 }
 
 .breadcrumb__item {
@@ -190,7 +204,7 @@ p > span {
     color: var(--swandoo-blue);
 }
 
-.specs-section {
+.gray-bg {
     background-color: #eeeeee4f;
 }
 
@@ -314,4 +328,83 @@ p > span {
 
 }
 
+.products-list {
+    padding: 0;
+    margin: 0;
+}
 
+.products-list__item__link {
+    display: block;
+    cursor: pointer;
+    max-height: 100%;
+    max-width: 430px;
+}
+
+.products-list__item__photo {
+    width: 100%;
+    height: auto;
+}
+
+.products-list__item__title {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 18px;
+    background-color: transparent;
+    text-align: center;
+    color: var(--swandoo-blue);
+    font-weight: 400;
+}
+
+.products-list__item__descr {
+    color: var(--swandoo-green);
+    text-transform: lowercase;
+}
+
+.products-list__item__photo {
+    opacity: 50%;
+    transition: opacity ease-in-out .5s;
+}
+
+.products-list__item__photo:hover {
+    opacity: 100%;
+}
+
+.cards-reviews {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+
+}
+
+.card-review__item {
+    max-width: 250px;
+    margin: 0 20px 40px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    font-size: 14px;
+    color: #babab8;
+}
+
+.card-review__item__descr {
+    padding: 15px 20px;
+    font-style: italic;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 19px;
+    margin: 0 20px;
+}
+
+.card-review__item__author {
+    display: block;
+    margin: 10px auto 20px;
+    text-align: center;
+}
+
+.stop_scroll {
+    overflow: hidden;
+}
+
+.nav__list {
+    display: none;
+}
