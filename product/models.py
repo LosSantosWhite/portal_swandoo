@@ -1,3 +1,4 @@
+from email.policy import default
 import os
 from django.db import models
 from ckeditor.fields import RichTextField
@@ -58,10 +59,10 @@ def upload_descr_photo(instance, filename):
     return os.path.join(
         'static',
         'products',
-        instance.name,
-        'description',
+        'features',
         filename
     )
+
 
 def upload_slider_image(instance, file_name):
     return os.path.join(
@@ -79,37 +80,39 @@ class Category(models.Model):
         return self.name
 
 
+class Feature(models.Model):
+    title = models.CharField('Заголовок колонки', max_length=30, blank=True, null=True)
+    text = models.CharField('Описание колонки', max_length=150, blank=True, null=True)
+    image = models.ImageField(verbose_name='Картинка колонки', blank=True, null=True,
+                              upload_to=upload_descr_photo)
+
+
 class Description(models.Model):
-    name = models.CharField('Название описания', max_length=50)  # html done
-    h1 = models.CharField('Заголовок h1', max_length=50, blank=True, null=True)  # html done
-    h2 = models.CharField('Подзаголовок h2', max_length=50, blank=True, null=True)  # html done
-    heading_1_text = RichTextField(verbose_name='Заголовок секции с наградами', blank=True, null=True)  # html done
-    # Тут картинки наград
-    # Секция 2
-    heading_2_header = RichTextField(verbose_name='Текст секции №2', blank=True, null=True)  # html done
-    heading_2_image_1 = models.ImageField(verbose_name='Картинка колонки 1', blank=True, null=True,
-                                          upload_to=upload_descr_photo)
-    heading_2_image_1_title = models.CharField('Заголовок колонки 1', max_length=30, blank=True, null=True)
-    heading_2_image_1_text = models.CharField('Описание колонки 1', max_length=150, blank=True, null=True)
-    heading_2_image_2 = models.ImageField(verbose_name='Картинка колонки 2', blank=True, null=True,
-                                          upload_to=upload_descr_photo)
-    heading_2_image_2_title = models.CharField('Заголовок колонки 2', max_length=30, blank=True, null=True)
-    heading_2_image_2_text = models.CharField('Описание колонки 2', max_length=150, blank=True, null=True)
-    heading_2_image_3 = models.ImageField(verbose_name='Картинка колонки 3', blank=True, null=True,
-                                          upload_to=upload_descr_photo)
-    heading_2_image_3_title = models.CharField('Заголовок колонки 3', max_length=30, blank=True, null=True)
-    heading_2_image_3_text = models.CharField('Описание колонки 3', max_length=150, blank=True, null=True)
-    heading_3_title = models.CharField('Заголовок секции с цветами', max_length=30, blank=True, null=True)
-    heading_3_subtitle = models.CharField('Подзаголовок секции цветов', default='Какой Ваш любимый?', max_length=30,
+    name = models.CharField('Название описания', max_length=50)
+    h1 = models.CharField('Заголовок h1', max_length=50, blank=True, null=True)
+    h2 = models.CharField('Подзаголовок h2', max_length=50, blank=True, null=True)
+    reward_title = RichTextField(verbose_name='Заголовок секции с наградами', blank=True, null=True)
+
+    heading_2_header = RichTextField(verbose_name='Текст секции №2', blank=True, null=True)
+    features = models.ManyToManyField(Feature, help_text='Желательно не больше 3 на 1 модель',
+                                      verbose_name='Спец. возмодности')
+    color_section_title = models.CharField('Заголовок секции с цветами', max_length=30, blank=True, null=True)
+    color_section_subtitle = models.CharField('Подзаголовок секции цветов', default='Какой Ваш любимый?', max_length=30,
                                           blank=True, null=True)
-    heading_4_title = models.CharField('Заголовок для секции видео', default='Как использовать', max_length=30,
+    video_section_title = models.CharField('Заголовок для секции видео', default='Как использовать', max_length=30,
                                        blank=True, null=True)
-    heading_4_video_1 = models.URLField('Видео №1', blank=True, null=True)
-    heading_4_video_2 = models.URLField('Видео №2', blank=True, null=True)
-    heading_4_video_3 = models.URLField('Видео №3', blank=True, null=True)
+
 
     def __str__(self):
         return self.name
+
+
+class VideoUrl(models.Model):
+    heading_4_video_1 = models.URLField('Ссылка на видео', blank=True, null=True)
+    descr = models.ForeignKey(Description, on_delete=models.PROTECT, related_name='video_urls')
+
+    def __str__(self):
+        return f"Video #{self.id} for {self.descr.model.name}"
 
 
 class Color(models.Model):
@@ -172,9 +175,9 @@ class Gallery(models.Model):
 
 
 class Slider(models.Model):
-    heading = models.CharField('Заголовок слайдера', max_length=100, )
-    description = models.CharField('Краткое описание', max_length=100, )
-
-    desktop_image = models.ImageField('Картинка для компьютерной версии сайта', upload_to=upload_slider_image)
-    mobile_image = models.ImageField('Картинка для мобильной версии сайта', upload_to=upload_slider_image)
-    url_to = models.URLField('Ссылка на страницу')
+    title = models.CharField('Заголовок слайдера', max_length=100, default='Заголовок слайдера')
+    description = models.CharField('Краткое описание слайдера', max_length=100, default='')
+    image = models.ImageField('Картинка слайдера', upload_to=upload_slider_image, default='')
+    button_text = models.CharField('Текст кнопки', max_length=30, default='Текст кнопки')
+    url_to = models.URLField('Ссылка на страницу', default='/')
+    

@@ -9,3 +9,9 @@ function showMore() {
   }
 }
 
+
+const defaultMenu = document.querySelectorAll("#mainMenu")
+
+defaultMenu.addEventListener("scroll", e => {
+
+})

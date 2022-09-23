@@ -1,6 +1,7 @@
 from django.contrib import admin
 
-from product.models import Category, Model, Description, Specification, Variety, Gallery, Color, RewardsImage, Slider
+from product.models import Category, Model, Description, Specification, Variety, Gallery, Color, RewardsImage, Slider, \
+    Feature
 
 
 @admin.register(Category)
@@ -46,5 +47,10 @@ class ModelAdmin(admin.ModelAdmin):
 
 @admin.register(Slider)
 class SliderAdmin(admin.ModelAdmin):
-    list_display = ['id', 'heading', 'url_to']
-    list_editable = ['heading', 'url_to']
+    list_display = ['id', 'title', 'url_to']
+    list_editable = ['title', 'url_to']
+
+
+@admin.register(Feature)
+class FeatureAdmin(admin.ModelAdmin):
+    list_display = ['title', 'text', 'image']

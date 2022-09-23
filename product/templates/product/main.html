@@ -3,44 +3,86 @@
 {% block title %}Swandoo официальная страница{% endblock %}
 {% block style %}
   <link rel="stylesheet" href="{% static 'style/css/slider.css' %}">
-  <link rel="stylesheet" href="{% static 'style/node_modules/swiper/swiper-bundle.min.css' %}">
+  <link rel="stylesheet" href="{% static 'style/css/swiper.min.css' %}">
+  <link rel="stylesheet" href="{% static 'style/css/burger.css' %}">
 {% endblock %}
 {% block content %}
   <section>
-    <div class="image-slider swiper-container">
+  <header>
+    <h1 class="d-none">Детские товары от рождения Swandoo от официально в России</h1>
+    {% for slider in sliders %}
+    <div class="desktop-slider image-slider swiper-container">
       <div class="image-slider__wrapper swiper-wrapper">
-        <div class="image-slider__slide swiper-slide"
-             style="background-image: url('{% static 'products/slider/1.png' %}')">
+        <div class="swiper-slide">
+          <img class="image-slider__slide" src={{ slider.image.url }} alt="">
           <div class="image-slider__content">
-            <h2 class="image-slider__header">Текст заголовка №1</h2>
-            <p class="image-slider__descr">Описание</p>
-            <a class="image-slider__btn">albert lite</a>
+            <h2 class="image-slider__header">{{ slider.title }}</h2>
+            <p class="image-slider__descr">{{ slider.description }}</p>
+            <a href="{{ url_to }}" class="image-slider__btn latin">{{ slider.button_text }}</a>
           </div>
         </div>
-        <div class="image-slider__slide swiper-slide"
-             style="background-image: url('{% static 'products/slider/1.png' %}')">
-          <div class="image-slider__content">
-            <h2 class="image-slider__header">Текст заголовка №1</h2>
-            <p class="image-slider__descr">Описание</p>
-            <a class="image-slider__btn">albert lite</a>
-          </div>
-        </div>
-      </div>
+    {% endfor %}
       <div class="swiper-pagination"></div>
     </div>
-  </section>
-  <section class="section-offset">
-    <div class="d-flex flex-row">
-      {% for variety in varieties %}
-        <div class="">
-        <p>{{ variety.barcode }}</p>
-          <img src="{{ variety.main_photo.url }}" alt="{{ variety.model.name }}">
+</section>
+  <section class="section-offset section-products">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <ul class="d-flex flex-row products-list justify-content-center">
+            {% for variety in varieties %}
+              <li class="products-list__item">
+                <a class="products-list__item__link">
+                  <img class="products-list__item__photo" src="{{ variety.main_photo.url }}"
+                       alt="{{ variety.model.name }}">
+                  <h3 class="text-center products-list__item__title latin"> {{ variety.model.description.h1 }}</h3>
+                  <p class="text-center products-list__item__descr">{{ variety.model.description.h2 }}</p>
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
         </div>
-      {% endfor %}
+      </div>
+  </section>
+  <section class="section-offset gray-bg">
+    <div class="container">
+      <div class="row cards-reviews">
+        <div class="card-review__item">
+          <img class="card-review__item__img" src="{% static 'card/review/1st.jpeg' %}" alt="">
+          <p class="card-review__item__descr">...Тут какойто отзыв</p>
+          <span class="card-review__item__author">@тут какойнибудь автор</span>
+        </div>
+        <div class="card-review__item">
+          <img class="card-review__item__img" src="{% static 'card/review/1st.jpeg' %}" alt="">
+          <p class="card-review__item__descr">...Тут какойто отзыв</p>
+          <span class="card-review__item__author">@тут какойнибудь автор</span>
+        </div>
+        <div class="card-review__item">
+          <img class="card-review__item__img" src="{% static 'card/review/1st.jpeg' %}" alt="">
+          <p class="card-review__item__descr">...Тут какойто отзыв</p>
+          <span class="card-review__item__author">@тут какойнибудь автор</span>
+        </div>
+        <div class="card-review__item">
+          <img class="card-review__item__img" src="{% static 'card/review/1st.jpeg' %}" alt="">
+          <p class="card-review__item__descr">...Тут какойто отзыв</p>
+          <span class="card-review__item__author">@тут какойнибудь автор</span>
+        </div>
+        <div class="card-review__item">
+          <img class="card-review__item__img" src="{% static 'card/review/1st.jpeg' %}" alt="">
+          <p class="card-review__item__descr">...Тут какойто отзыв</p>
+          <span class="card-review__item__author">@тут какойнибудь автор</span>
+        </div>
+
+      </div>
+    </div>
     </div>
   </section>
-  <script src="{% static 'style/node_modules/swiper/swiper-bundle.min.js' %}"></script>
+
+
+
+
+{% endblock %}
+{% block style_js %}
+  <script src="{% static 'style/js/swiper.min.js' %}"></script>
   <script src="{% static 'style/js/slider.js' %}"></script>
-
-
 {% endblock %}
