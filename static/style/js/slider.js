@@ -1,11 +1,9 @@
-new Swiper('.image-slider', {
-    pagination: {
-      el: '.swiper-pagination',
-    },
-    loop: true,
-  autoplay: {
-      delay: 1500,
-      disableOnInteraction: true,
+const swiper = new Swiper(".mySwiper", {
+  
+  slidesPerView: 3,
+  spaceBetween: 20,
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
   },
-  speed: 700
 });

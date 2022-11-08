@@ -13,27 +13,59 @@
 
 </head>
 <body>
-  <section>
-    <div class="container-fluid">
-    <nav  class="header_nav {%if request.path != '/' %} white-bg {% endif %}">
-        <div class="logo">
-          <a href="{% url 'main' %}">
-            <img class="" src="{% if request.path != "/" %}{% static 'img/logo_blue.svg' %}{% else %}{% static 'img/logo_white.svg' %}{% endif %}" alt="Swandoo - всегда с Вами">
-          </a>
-        </div>
-        <div id="burgerMenu" class="burger {% if request.path != '/'%}burger-blue{% endif %}">
-          <span class="burger__burger-line"></span>
-          <span class="burger__burger-line"></span>
-          <span class="burger__burger-line"></span>
-        </div>
-        <ul id="menuBurgerItems" class="header-nav__items">
-          <li class="header-nav__items__item">Секция 1</li>
-          <li class="header-nav__items__item">Секция 2</li>
-          <li class="header-nav__items__item">Секция 3</li>
-        </ul>      
-      </nav>
-    </div>
-  </section>
+<section>
+  <div class="container-fluid">
+    <nav class="header_nav {% if request.path != '/' %} white-bg {% endif %}">
+      <div class="logo">
+        <a href="{% url 'main' %}">
+          <img class="" src="
+              {% if request.path != "/" %}{% static 'img/logo_blue.svg' %}{% else %}{% static 'img/logo_white.svg' %}{% endif %}"
+               alt="Swandoo - всегда с Вами">
+        </a>
+      </div>
+      <div id="burgerMenu" class="burger {% if request.path != '/' %}burger-blue{% endif %}">
+        <span class="burger__burger-line"></span>
+        <span class="burger__burger-line"></span>
+        <span class="burger__burger-line"></span>
+      </div>
+      <div id="menuBurgerItems" class="header-nav__items">
+        <ul class="header-nav__list">
+          <li class="header-nav__item">
+            <ul>
+              <li class="latin  header-nav__item__section">
+                <a href="{% url 'about_view' %}" class="header-nav__item__link">SWANDOO</a>
+                <ul>
+                  <li class="item__sub__menu">
+                    <a href="{% url 'about_view' %}">О бренде</a>
+                  </li>
+                  <li class="item__sub__menu">
+                    <!-- TODO -->
+                    <a href="#">Где нас найти</a>
+                  </li>
+                  <li class="item__sub__menu">
+                    <!-- TODO -->
+                    <a href="#">Сотрудничество</a>
+                  </li>
+                </ul>
+              </li>
+               <li class="header-nav__item__section">
+                <a href="" class="header-nav__item__link">Наши товары</a>
+                <ul>
+                  {% for model in models_footer %}
+                    <li class="latin item__sub__menu">
+                      <a href="{% url 'product:product_detail' model.slug %}">{{ model.name }}</a>
+                    </li>
+                  {% endfor %}
+                </ul>
+            </ul>
+          </li>
+          <li class="header-nav__item">Секция 2</li>
+          <li class="header-nav__item">Секция 3</li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</section>
 {% block content %}{% endblock %}
 <footer>
   <div class="light-bg">
@@ -65,9 +97,13 @@
       <div class="row">
 
         <div class="col-sm-12 col-md-6 col-lg-3 my-2">
-          <h3 class="footer__item-title">О нас</h3>
+          <h3 class="footer__item-title">
+            <a href="{% url 'about_view' %}">О нас</a>
+          </h3>
           <ul class="footer-list flex-column">
-            <li class="footer__item">Познакомтесь с cемьей Swandoo</li>
+            <li class="footer__item">
+              <a href="{% url 'about_view' %}">Познакомтесь с cемьей Swandoo</a>
+            </li>
             <li class="footer__item">Сотрудничество с нами</li>
           </ul>
         </div>
@@ -110,9 +146,12 @@
 </footer>
 <script rel="stylesheet" type="application/javascript"
         src="{% static 'style/js/bootstrap.min.js' %}"></script>
-<script rel="stylesheet" type="application/javascript" type="text/javascript" src="{% static 'style/js/burger.js' %}"></script>
-<script rel="stylesheet" type="application/javascript" type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
-<script rel="stylesheet" type="application/javascript" type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
-{% block style_js %}{%endblock%}
+<script rel="stylesheet" type="application/javascript" type="text/javascript"
+        src="{% static 'style/js/burger.js' %}"></script>
+<script rel="stylesheet" type="application/javascript" type="text/javascript"
+        src="{% static "ckeditor/ckeditor-init.js" %}"></script>
+<script rel="stylesheet" type="application/javascript" type="text/javascript"
+        src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
+{% block style_js %}{% endblock %}
 </body>
 </html>
