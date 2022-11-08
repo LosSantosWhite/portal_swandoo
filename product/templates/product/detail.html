@@ -2,18 +2,17 @@
 {% load static %}
 {% block title %} Swandoo {{ product.name }} {% endblock %}
 {% block content %}
-  <section class="detail__header">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 mx-auto">
-          <img class='main-image' src="{{ main_photo.main_photo.url }}" alt="">
+  <section class="sw_product_first-screen detail__header">
+        <div class="container option__heading">
+
+            <img class="main-image" src="{{ main_photo.main_photo.url }}" alt="">
+            <h1 class="detail__h1">{{ product.description.h1 }}</h1>
+            <h2 class="detail__h2">{{ product.description.h2 }}</h2>
         </div>
-      </div>
-      <div class="row justify-content-center flex-column">
-        <h1 class="detail__h1">{{ product.description.h1 }}</h1>
-        <h2 class="detail__h2">{{ product.description.h2 }}</h2>
-      </div>
-      <nav aria-label="breadcrumb ">
+  </section>
+  <section class="section-offset">
+    <div class="container">
+      <nav aria-label="breadcrumb">
         <ul class="breadcrumb justify-content-center">
           <li class="breadcrumb__item">
               <span style="color: var(--swandoo-green); font-size: 16px; line-height: 24px;">
@@ -32,9 +31,6 @@
         </ul>
       </nav>
     </div>
-  </section>
-  <section class="section-offset">
-    <div class="container">
       <div class="row">
         <div class="col-md-8 mx-auto text-center">
           {{ product.description.reward_title | safe }}

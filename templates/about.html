@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block style %}
+<link rel="stylesheet" href={% static 'style/css/about.css' %}></link>
+<link rel="stylesheet" href="{% static 'style/css/swiper.min.css' %}">
+
+{% endblock style %}
+
+
+{% block content %}
+<section class="section-offset">
+    <div class="row">
+    <div class="container">
+        <h1 class="text-center about-us-h1">Добро пожаловать в семью <span class='latin'>Swandoo</span></h1>
+        <h2 class="text-center about-us-h2">
+            Мы молодая команда, которая помогает семьям найти простые жизненные решения для радостной
+             и сбалансированной жизни.
+        </h2>
+        <div class="col-12">
+            <img class="about-us__image" src="{% static 'img/swandoo_team.jpg' %}" alt="Семья Swandoo">
+        </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="container">
+            <div class="col-12 mt-2">
+                <h4 class="about-us__h4">КТО ТАКИЕ <span class="latin"><b>SWANDOO</b></span>?</h4>
+                <article class="about-us__descr">
+                    <p>
+                        <span class="latin">Swandoo</span> как бренд основан в&nbsp;Австрии, в&nbsp;Вене, командой неординарно мыслящих дизайнеров и&nbsp;инженеров.Мы дотошны к&nbsp;своем отношении к&nbsp;безопасности и&nbsp;качеству продукта. Большинство из&nbsp;нас родители и&nbsp;мы&nbsp;используем наши автокресла с&nbsp;нашими детьми.
+                    </p>
+                    <br>
+                    <p>
+                        Как любой родитель, мы&nbsp;хотим максимальной безопасности для наших непосед. К&nbsp;сожалению, продукты, которые мы&nbsp;находили на&nbsp;рынке, не&nbsp;отвечали нашим требованиям к&nbsp;качеству и&nbsp;безопасности. Многие напоминали реквизит из&nbsp;дешевых научно-фантастических фильмов, а&nbsp;некоторые даже из&nbsp;фильмов ужасов!
+                    </p>
+                    <br>
+                    <p>
+                        Мы&nbsp;решили взять дело в&nbsp;свои руки, полагаясь на&nbsp;наш опыт в&nbsp;развитии инновационных продуктов. Мы&nbsp;взяли на&nbsp;себя ответственность и&nbsp;расширили стандарты производства детских автокресел. И&nbsp;мы&nbsp;не&nbsp;могли больше остановиться! Мы&nbsp;стремимся создавать лучшие продукты из&nbsp;возможных на&nbsp;сегодняшний день. Мы&nbsp;всегда будем улучшать наши автокресла. Потому, что для нас это очень-очень важно.
+                    </p>
+                </article>
+                <!---TODO-->
+                <a href="" class="image-slider__btn">Продукция</a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="container">
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img class="about-us__swiper-img" src="{% static 'img/about_us_img/slide-1.png' %}" alt="">
+                    </div>
+                    <div class="swiper-slide">
+                        <img class="about-us__swiper-img" src="{% static 'img/about_us_img/slide-2.png' %}" alt="">
+                    </div>
+                    <div class="swiper-slide">
+                        <img class="about-us__swiper-img" src="{% static 'img/about_us_img/slide-3.png' %}" alt="">
+                    </div>
+                    <div class="swiper-slide">
+                        <img class="about-us__swiper-img" src="{% static 'img/about_us_img/slide-4.png' %}" alt="">
+                    </div>
+                    <div class="swiper-slide">
+                        <img class="about-us__swiper-img" src="{% static 'img/about_us_img/slide-5.png' %}" alt="">
+                    </div>
+                    <div class="swiper-slide">
+                        <img class="about-us__swiper-img" src="{% static 'img/about_us_img/slide-6.png' %}" alt="">
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </div>
+    </div>
+    
+</section>
+{% endblock content %}
+{% block style_js %}
+<script src="{% static 'style/js/swiper.min.js' %}"></script>
+<script src="{% static 'style/js/about.js' %}"></script>
+{% endblock %}
